@@ -74,6 +74,13 @@ a:focus-visible,button:focus-visible{outline:2px solid #F72585;outline-offset:3p
 .hv4:hover{border-color:#F72585 !important;color:#F5F2ED !important}
 .fc0:focus{top:12px !important}
 [hidden]{display:none !important}
+/* iOS Safari stability: giant blur + blend layers exceed mobile GPU memory and
+   crash the WebContent process ("A problem repeatedly occurred"). On small
+   screens, drop the low-opacity bokeh accents and cap bloom blur. Desktop unchanged. */
+@media (max-width:1023px){
+  .bokeh{display:none !important}
+  .bloom{filter:blur(70px) !important}
+}
 </style>
 </head>
 <body>
